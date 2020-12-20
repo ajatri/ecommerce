@@ -1,5 +1,5 @@
   create table if not exists address(
-    id BIGINT PRIMARY KEY COMMENT "Unique Id for the address",
+    id BIGINT PRIMARY KEY COMMENT "Unique Id of the user",
     landmark VARCHAR(100) "any object or feature to identify the location "
     city VARCHAR(30) NOT NULL "city/village of the user",
       state VARCHAR(30) NOT NULL "state of the user" ,
