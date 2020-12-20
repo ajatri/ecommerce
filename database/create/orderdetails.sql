@@ -1,7 +1,7 @@
   create table if not exists orderdetails(
-    oid BIGINT PRIMARY KEY COMMENT "Unique Id for the Product",
+    id BIGINT PRIMARY KEY COMMENT "Unique Id for the oderdetails",
     pid VARCHAR(100) NOT NULL,
     quantity INT  NOT NULL ,
-     FOREIGN KEY (oid) REFERENCES order(oid)
-    FOREIGN KEY (pid) REFERENCES product(pid)
+     FOREIGN KEY (id) REFERENCES order(id)
+    FOREIGN KEY (pid) REFERENCES product(id)
   );
