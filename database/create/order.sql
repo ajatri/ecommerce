@@ -5,4 +5,4 @@ create table if not exists order(
     FOREIGN KEY(uid) REFERENCES user(id),
    FOREIGN KEY(shipid) REFERENCES shipper(id)
   );
-© 2020 GitHub, Inc.
+
