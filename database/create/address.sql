@@ -5,5 +5,6 @@
       state VARCHAR(30) NOT NULL ,
     email VARCHAR(30) NOT NULL,
     phone INT  NOT NULL,
+    pin INT  NOT NULL,
     FOREIGN KEY (id) REFERENCES user(id)
   );
