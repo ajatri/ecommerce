@@ -1,8 +1,8 @@
 create table if not exists order(
-    oid BIGINT PRIMARY KEY COMMENT "Unique Id for the order ",
+    id BIGINT PRIMARY KEY COMMENT "Unique Id for the order ",
     uid BIGINT NOT NULL ,
     shipid INT NOT NULL ,
-    FOREIGN KEY(uid) REFERENCES user(uid),
-   FOREIGN KEY(shipid) REFERENCES shipper(shipid)
+    FOREIGN KEY(uid) REFERENCES user(id),
+   FOREIGN KEY(shipid) REFERENCES shipper(id)
   );
 © 2020 GitHub, Inc.
