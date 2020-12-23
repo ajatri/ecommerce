@@ -9,7 +9,7 @@ const router = require("express").Router();
 router.post("/", async (req, res) => {
     const { body } = req;
     getConnection()
-        .then(connection => connection.execute(queries.AddProducts, [body.name, body.price, body.image, body.des])
+        .then(connection => connection.execute(queries.AddProduct, [body.name, body.price, body.image, body.des])
             .then(result => { res.status(200).end(JSON.stringify({ message: { result: result[0] } })) })
             .catch(error => { res.status(500).end(JSON.stringify({ error })) }))
         .catch(console.log);
@@ -17,9 +17,9 @@ router.post("/", async (req, res) => {
 
 //Read
 router.get("/", async (req, res) => {
-    getConnection()
+    getConnection()    
         .then(connection => connection.query(queries.GetAllProducts)
-            .then(result => { res.status(200).end(JSON.stringify({ sellers: { result: result[0] } })) })
+            .then(result => { res.status(200).end(JSON.stringify({ products : { result: result[0] } })) })
             .catch(error => { res.status(500).end(JSON.stringify({ error })) })
         )
         .catch(console.log)
