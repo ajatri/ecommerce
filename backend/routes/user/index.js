@@ -23,7 +23,7 @@ router.get("/", async (req, res) => {
             .catch(error => { res.status(500).end(JSON.stringify({ error })) })
         )
         .catch(console.log)
-    //add more logic in future to get product by id
+    //add more logic in future to get user by id
 });
 
 //Update
