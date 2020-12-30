@@ -6,14 +6,20 @@ const router = require("express").Router();
 //CRUD-Create Read Update Delete
 
 //Create
-router.post("/", async (req, res) => {
-    const { body } = req;
-    getConnection()
-        .then(connection => connection.execute(queries.AddSeller, [body.name, body.email, body.phone, body.address])
-            .then(result => { res.status(200).end(JSON.stringify({ message: { result: result[0] } })) })
-            .catch(error => { res.status(500).end(JSON.stringify({ error })) }))
-        .catch(console.log);
-});
+router.post("/",
+
+
+    async (req, res) => {
+        const { body } = req;
+        getConnection()
+            .then(connection => connection.execute(queries.AddSeller, [body.name, body.email, body.phone, body.address])
+                .then(result => { res.status(200).end(JSON.stringify({ message: { result: result[0] } })) })
+                .catch(error => { res.status(500).end(JSON.stringify({ error })) }))
+            .catch(console.log);
+    }
+
+
+);
 
 //Read
 router.get("/", async (req, res) => {

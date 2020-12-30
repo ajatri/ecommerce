@@ -1,10 +1,19 @@
 const router = require("express").Router();
 
-router.get("/",(req,res)=>{
-    res.send([{
-            name:"Rakshith",
-            age:100
-        }]);
-})
+router.get("/",
 
-module.exports=router;
+    // request handler
+    (req, res) => {
+
+        res.send([{
+            name: "Rakshith",
+            age: 100
+        }]);
+
+    }
+
+
+
+)
+
+module.exports = router;

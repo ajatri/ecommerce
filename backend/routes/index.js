@@ -2,11 +2,13 @@ const router = require("express").Router();
 const user = require("./user")
 const products = require("./product")
 const seller = require("./seller")
-const auth = require("./auth")
+const { router: auth, authMiddleware } = require("./auth")
 
-router.use("/users", user)
-router.use("/seller", seller)
-router.use("/products", products)
-router.use("/auth", auth);
+//protected
+router.use("/users", authMiddleware, user)
+router.use("/seller", authMiddleware, seller)
+router.use("/products", authMiddleware, products)
+
+router.use("/auth", auth); //Non protected
 
 module.exports = router;
