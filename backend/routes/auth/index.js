@@ -1,37 +1,27 @@
 const router = require("express").Router();
-const  jwt     = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 
-router.post("/", (req, res) => {
-    //login
-      const user ={
-        id:1,
-        username:'brad'
+router.post("/login", (req, res) => {
+    try {
+        const token = jwt.sign({ user: user }, 'secretkey');
+        res.json({ token });
+    } catch (error) {
+        res.status(500).json({ error });
     }
-    jwt.sign({user:user},'secretkey',(err,token)=>{
-        res.json({
-            token
-        });
-    });
-    
-  });
-  router.post("/verify", verifyToken,(req, res) => {
-   jwt.verify(req.token,'secretkey',(err,authData)=>{
-       if(err){
-           res.sendStatus(403);
-       }else{ res.json({
-        message:'welcome',
-        authData
- 
-
-      
-    });
-}
-   
-  });
 });
-function verifyToken(req, res, next){
+
+router.post("/verify", fetchToken, (req, res) => {
+    try {
+        const authData = jwt.verify(req.token, 'secretkey');
+        res.json({ message: "verified", authData });
+    } catch (error) {
+        res.status(500).json({ error });
+    }
+});
+
+function fetchToken(req, res, next) {
     const bearerHeader = req.headers['authorization'];
-    if(typeof bearerHeader !== 'undefined'){
+    if (typeof bearerHeader !== 'undefined') {
         const bearer = bearerHeader.split(' ');
         const bearerToken = bearer[1];
         req.token = bearerToken;
