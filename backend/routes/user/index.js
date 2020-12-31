@@ -45,4 +45,18 @@ router.delete("/", async (req, res) => {
             .catch(error => { console.log(error); res.status(500).end(JSON.stringify({ error })) }))
         .catch(console.log);
 });
+router.post("/add", async (req, res) => {
+   
+    const first_name = req.body.first_name;
+    const last_name = req.body.last_name;
+    const email = req.body.email;
+    const pass = req.body.password;
+    getConnection()
+        .then(connection => connection.execute(queries.AddUser, [first_name,last_name,email,pass])
+            .then(result => { res.status(200).end(JSON.stringify({ message: { result: result[0] } })) })
+            .catch(error => { res.status(500).end(JSON.stringify({ error })) }))
+        .catch(console.log);
+        
+});
+
 module.exports = router;
