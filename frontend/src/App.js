@@ -2,7 +2,7 @@ import AppSkeleton from "./components/AppSkeleton"
 
 function App() {
   return (
-    <AppSkeleton></AppSkeleton>
+    <AppSkeleton/>
   );
 }
 
