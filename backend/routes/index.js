@@ -5,8 +5,8 @@ const seller = require("./seller")
 const { router: auth, authMiddleware } = require("./auth")
 
 
-router.use("/users", authMiddleware, user)
-router.use("/seller", authMiddleware, seller)
+router.use("/users", user)
+router.use("/seller",authMiddleware,  seller)
 router.use("/products", authMiddleware, products)
 
 router.use("/auth", auth); 

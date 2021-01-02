@@ -9,5 +9,6 @@ module.exports = {
     DeleteProduct: "delete from product where id=?;",
     AddUser: "insert into user(first_name,last_name,email,pass) values (?,?,?,?);",
    UpdateUser: "update user set first_name=?,last_name=?,email=?,pass=? where id=?;",
-    DeleteUser: "delete from user where id=?;"
+    DeleteUser: "delete from user where id=?;",
+    CheckUser : "select first_name,pass from user where first_name= ? and pass= ? ; "
 }
