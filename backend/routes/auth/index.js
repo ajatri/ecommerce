@@ -16,7 +16,7 @@ router.post("/login", async(req, res) => {
               console.log(result);
 	            if(result.length>0){
   	          	const token = jwt.sign({ user: user1 }, 'secretkey', { expiresIn: 60 * 60 });
-    	        	res.status(200).json({ token });
+    	        	res.status(200).json({ token});
               }else{
 	              res.status(403).json({error:"user not found"});
               }
@@ -40,6 +40,7 @@ function authMiddleware(req, res, next) {
         const bearerToken = bearer[1];
         try {
             const authData = jwt.verify(bearerToken, 'secretkey');
+           
             next();
         } catch (error) {
             res.status(403).json({ message: "Not authenticated" });

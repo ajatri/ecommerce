@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import ProductCard from "../../domain/Product/ProductCard";
 
 const Home = () => {
     const [products, setProducts] = useState([]);
@@ -13,15 +14,13 @@ const Home = () => {
             }
         }).then((res) => {
             setProducts(res.data.products.result);
-        }).catch(console.log);
+  }).catch(console.log);
     }, []);
     return (<div>
         Products
         {
-            products.map((product) =>
-                <div style={{ color: "blue" }}>
-                    {product.id} - {product.name}
-                </div>
+            products.map((product) =>                
+            <ProductCard key={product.id} product={product} />
             )
         }
     </div >)
