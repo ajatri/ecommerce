@@ -17,9 +17,9 @@ router.post("/", async (req, res) => {
 
 //Read
 router.get("/", async (req, res) => {
-    getConnection()    
+    getConnection()
         .then(connection => connection.query(queries.GetAllProducts)
-            .then(result => { res.status(200).end(JSON.stringify({ products : { result: result[0] } })) })
+            .then(result => { res.status(200).end(JSON.stringify({ products: { result: result[0] } })) })
             .catch(error => { res.status(500).end(JSON.stringify({ error })) })
         )
         .catch(console.log)
@@ -45,4 +45,13 @@ router.delete("/", async (req, res) => {
             .catch(error => { console.log(error); res.status(500).end(JSON.stringify({ error })) }))
         .catch(console.log);
 });
+
+router.post("/wishlist", async ({ body: { pid }, userDetails: { id } }, res) => {
+    getConnection()
+        .then(connection => connection.execute(queries.AddToWishList, [id, pid])// access user id from req.userDetails.id
+            .then(result => { res.status(200).end(JSON.stringify({ message: { result: result[0] } })) })
+            .catch(error => { res.status(500).end(JSON.stringify({ error })) }))
+        .catch(console.log);
+});
+
 module.exports = router;
