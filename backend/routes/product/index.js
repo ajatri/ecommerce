@@ -21,7 +21,7 @@ router.post("/", async (req, res) => {
 router.get("/", async (req, res) => {
     const uid = req.userDetails.id;
     getConnection()    
-        .then(connection => connection.query(queries.GetAllProducts,[uid])
+        .then(connection => connection.query(queries.GetAllProducts,[uid,uid])
             .then(result => { res.status(200).end(JSON.stringify({ products : { result:result[0] } })) 
         console.log(result);
         
