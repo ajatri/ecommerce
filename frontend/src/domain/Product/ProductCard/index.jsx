@@ -1,15 +1,53 @@
 import  React from "react";
+import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 
-const ProductCard = (props) =>{
+const ProductCard = ({ product: { id, name,price,num} }) => { 
+   
+    const history = useHistory();
     const wishlist = () => {
-        //props.product.id;
-    }
+       
+        const token = localStorage.getItem("token");
+        
+
+        axios.post("http://localhost:8000/wishlist",{pid:id} ,{
+            headers: {
+                Authorization: "Bearer " + token
+            }
+        }).then((res) => {
+
+
+
+
+
+            
+         
+              history.push("/");
+           
+  }).catch(console.log);
+    };
+
+
+    
+
+
+        
+    
   return(
-        <div>
-        {props.product.id} -{props.product.name}
-        <button name="wishlist" onClick={wishlist} />
+     <div>
+      
+       {id} - {name} - {price} 
+{   num>0 || <button name="wishlist" onClick={wishlist}   >wishlist </button>
+
+ }       
+     
+       
+  
+      
+    
         </div>
+    
   )
 };
 export default ProductCard;

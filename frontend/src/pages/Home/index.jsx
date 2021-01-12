@@ -7,20 +7,23 @@ const Home = () => {
 
     useEffect(() => {
         const token = localStorage.getItem("token");
+        
 
         axios.get("http://localhost:8000/products", {
             headers: {
                 Authorization: "Bearer " + token
             }
         }).then((res) => {
+            
             setProducts(res.data.products.result);
+            console.log(res.data.products.result)
   }).catch(console.log);
     }, []);
     return (<div>
         Products
         {
             products.map((product) =>                
-            <ProductCard key={product.id} product={product} />
+            <ProductCard key = {product.id}  product={product} />
             )
         }
     </div >)
