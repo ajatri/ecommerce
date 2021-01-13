@@ -3,6 +3,7 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 
 
+
 const ProductCard = ({ product: { id, name,price,num,num2} }) => { 
   
     const history = useHistory();
@@ -36,18 +37,24 @@ history.push("/");
 };
 
 
+
+//show cart
+
+
+
         
     
   return(
      <div>
       
-       {id} - {name} - {price} -{num2}-{num}
+       {id} - {name} - {price} 
 {   num>0 || <button name="wishlist" onClick={wishlist}   >wishlist </button>
 
  }       
     {num2>0 || <button name="cart" onClick={cart}   >cart </button>
 }
-       
+
+
   
       
     
