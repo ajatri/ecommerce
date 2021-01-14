@@ -7,6 +7,7 @@ import {
 import Login from "../../pages/Login"
 import SignUp from "../../pages/SignUp"
 import Home from "../../pages/Home"
+import Wishlist from "../../pages/Wishlist"
 
 const AppRouter = () => <Router>
     <Switch>
@@ -15,6 +16,9 @@ const AppRouter = () => <Router>
         </Route>
         <Route path="/signup">
             <SignUp />
+        </Route>
+        <Route path="/wishlist">
+            <Wishlist />
         </Route>
         <Route path="/">
             <Home />

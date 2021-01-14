@@ -17,7 +17,19 @@ console.log('bye')
         .catch(console.log);
 });
 
-
+router.get("/showwishlist", async (req, res) => {
+   
+    const uid = req.userDetails.id;
+   
+       
+        console.log(uid);
+        getConnection()
+            .then(connection => connection.execute(queries.ShowWishlist ,[uid] )
+                .then(result => { res.status(200).end(JSON.stringify({ wishlist : { result: result[0] } })) })
+                .catch(error => { res.status(500).end(JSON.stringify({ error }))
+                console.log(error); }))
+            .catch(console.log);
+    });
 
 
 

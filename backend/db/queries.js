@@ -11,5 +11,6 @@ module.exports = {
    UpdateUser: "update user set first_name=?,last_name=?,email=?,pass=? where id=?;",
     DeleteUser: "delete from user where id=?;",
     CheckUser : "select id,first_name,pass from user where first_name= ? and pass= ? ; ",
-    AddToWishlist : "insert into wishlist(pid,uid) values (?,?);"
+    AddToWishlist : "insert into wishlist(pid,uid) values (?,?);",
+    ShowWishlist : "select p.* from product p right outer join (select * from wishlist where uid=?) w on w.pid=p.id group by p.id;  "
 }
