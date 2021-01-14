@@ -1,48 +1,34 @@
-/*
-import  React from "react";
-import axios from "axios";
-import {useEffect} from "react";
-import { useHistory } from "react-router-dom";
 
-const cart = props=>{const location = useLocation();
-useEffect(()=>{
-
-console.log(location.state.result);
-
-
-
-},[location])};
-
- 
-
-export default cart;*/
 import axios from "axios";
 import { useEffect, useState } from "react";
-import ProductCard from "../../domain/Product/ProductCard";
-import { useHistory,useLocation } from "react-router-dom";
 
-  
+import { useHistory } from "react-router-dom";
 
-const Cart = ()=>{
-    const location= useLocation();
-    console.log(location.state.ans)
- 
+const Cart = () => {
+    const [cart, setCart] = useState([]);
+    const history = useHistory();
 
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+       axios.get("http://localhost:8000/cart/showcart", {
+            headers: {
+                Authorization: "Bearer " + token
+            }
+        }).then((res) => {
+            setCart(res.data.cart.result);
+           
+  }).catch(console.log);
+    }, []);
 
-return(
-    
+const listItems = cart.map((carts) => (
+    <div key={carts.id}>
+      {carts.name}  : {carts.price}
 
-<div>llocation={location.state} </div>
+    </div>
 
+  ));
 
+return(<div> {listItems}</div>)
 
-
-)
 }
-
-    
-    
-  
-
-
 export default Cart;

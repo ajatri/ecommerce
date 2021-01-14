@@ -25,7 +25,7 @@ router.get("/showcart", async (req, res) => {
         console.log(uid);
         getConnection()
             .then(connection => connection.execute(queries.ShowCart ,[uid] )
-                .then(result => { res.status(200).end(JSON.stringify({ message: { result: result[0] } })) })
+                .then(result => { res.status(200).end(JSON.stringify({ cart : { result: result[0] } })) })
                 .catch(error => { res.status(500).end(JSON.stringify({ error }))
                 console.log(error); }))
             .catch(console.log);

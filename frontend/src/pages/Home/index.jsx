@@ -11,7 +11,9 @@ const Home = () => {
         const token = localStorage.getItem("token");
        axios.get("http://localhost:8000/products", {
             headers: {
+
                 Authorization: "Bearer " + token
+
             }
         }).then((res) => {
             
@@ -22,25 +24,29 @@ const Home = () => {
 
 
     //show cart
-    const showcart = (props) => {
+    const showcart = () => {
        
-        const token = localStorage.getItem("token");
-              console.log(token)
-      
-          axios.get("http://localhost:8000/cart/showcart",{
-              headers: {
-                  Authorization: "Bearer " + token
-              }
-          }).then((res) => {console.log(res.data.message.result);
-      props.history.push({pathname : "/cart",
-      state:{ans:res.data.message.result}});
-      
-             
-      }).catch(console.log);
-             
         
-      };
+history.push("/cart")
+     
+             
+     
+    };
 
+      const signout= () => {
+       
+       localStorage.clear();
+       const token = localStorage.getItem("token");
+      
+
+   axios.get("http://localhost:8000/cart",{
+       headers: {
+           Authorization: "Bearer " + token
+       }
+   }).then((res) => {
+    history.push("/login");//home
+}).catch(console.log);
+}
 
 
 
@@ -48,6 +54,7 @@ const Home = () => {
     return (<div>
         
 <button name="showcart" onClick={showcart}   >showcart </button>  
+<button name="signout" onClick={signout}   >signout </button>
         Products
         {
             products.map((product) =>                
