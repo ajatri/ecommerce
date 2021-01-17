@@ -7,11 +7,16 @@ import {
 import Login from "../../pages/Login"
 import SignUp from "../../pages/SignUp"
 import Home from "../../pages/Home"
+import Cart from "../../pages/Cart"
+
 
 const AppRouter = () => <Router>
     <Switch>
         <Route path="/login">
             <Login />
+        </Route>
+        <Route path="/cart">
+            <Cart/>
         </Route>
         <Route path="/signup">
             <SignUp />

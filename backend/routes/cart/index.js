@@ -16,4 +16,18 @@ console.log('bye')
             console.log(error); }))
         .catch(console.log);
 });
+
+router.get("/cart", async (req, res) => {
+   
+    const uid = req.userDetails.id;
+    console.log('bye')
+       
+        console.log(uid);
+        getConnection()
+            .then(connection => connection.execute(queries.ShowCart ,[uid] )
+                .then(result => { res.status(200).end(JSON.stringify({ cart : { result: result[0] } })) })
+                .catch(error => { res.status(500).end(JSON.stringify({ error }))
+                console.log(error); }))
+            .catch(console.log);
+    });
 module.exports = router;
