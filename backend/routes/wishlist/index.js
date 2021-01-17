@@ -17,7 +17,7 @@ console.log('bye')
         .catch(console.log);
 });
 
-router.get("/showwishlist", async (req, res) => {
+router.get("/wishlist", async (req, res) => {
    
     const uid = req.userDetails.id;
    

@@ -9,7 +9,7 @@ const Wishlist = () => {
 
     useEffect(() => {
         const token = localStorage.getItem("token");
-       axios.get("http://localhost:8000/wishlist/showwishlist", {
+       axios.get("http://localhost:8000/wishlist/wishlist", {
             headers: {
                 Authorization: "Bearer " + token
             }
