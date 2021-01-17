@@ -10,7 +10,7 @@ const Cart = () => {
 
     useEffect(() => {
         const token = localStorage.getItem("token");
-       axios.get("http://localhost:8000/cart/showcart", {
+       axios.get("http://localhost:8000/cart/cart", {
             headers: {
                 Authorization: "Bearer " + token
             }
