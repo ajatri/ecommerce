@@ -8,60 +8,43 @@ const Home = () => {
     const history = useHistory();
 
     useEffect(() => {
-        const token = localStorage.getItem("token");
+       const token = localStorage.getItem("token");
        axios.get("http://localhost:8000/products", {
             headers: {
-
                 Authorization: "Bearer " + token
-
             }
         }).then((res) => {
-            
             setProducts(res.data.products.result);
-            
-  }).catch(console.log);
+      }).catch(console.log);
     }, []);
-
-
+  
     //show cart
-    const showcart = () => {
-       
-        
-history.push("/cart")
-     
-             
-     
+    const showwishlist = () => {
+        history.push("/wishlist")
     };
-
-      const signout= () => {
-       
-       localStorage.clear();
-       const token = localStorage.getItem("token");
-      
-
-   axios.get("http://localhost:8000/cart",{
-       headers: {
-           Authorization: "Bearer " + token
-       }
-   }).then((res) => {
-    history.push("/login");//home
-}).catch(console.log);
-}
-
-
-
-
-    return (<div>
-        
-<button name="showcart" onClick={showcart}   >showcart </button>  
-<button name="signout" onClick={signout}   >signout </button>
+ 
+    const showcart = () =>{
+        history.push("/cart")
+    };
+  
+    const signout= () => { 
+     localStorage.clear();
+     history.push("/login");
+    }
+    
+    return (
+     <div>
+        <button name="showwishlist" onClick={showwishlist}   >show wishlist </button>  
+        <button name="showcart" onClick={showcart}   >showcart </button>  
+        <button name="signout" onClick={signout}   >signout </button>
         Products
         {
             products.map((product) =>                
             <ProductCard key = {product.id}  product={product} />
             )
         }
-    </div >)
+    </div >        
+   )
 }
 
 export default Home;
