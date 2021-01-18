@@ -8,46 +8,43 @@ const Home = () => {
     const history = useHistory();
 
     useEffect(() => {
-        const token = localStorage.getItem("token");
+       const token = localStorage.getItem("token");
        axios.get("http://localhost:8000/products", {
             headers: {
-
                 Authorization: "Bearer " + token
-
             }
         }).then((res) => {
-            
             setProducts(res.data.products.result);
-            
-  }).catch(console.log);
+      }).catch(console.log);
     }, []);
-
-
+  
     //show cart
     const showwishlist = () => {
-       
-        
-history.push("/wishlist")
-     
-             
-     
+        history.push("/wishlist")
     };
-
-      
-
-
-
-    return (<div>
-        
-<button name="showwishlist" onClick={showwishlist}   >show wishlist </button>  
-
+ 
+    const showcart = () =>{
+        history.push("/cart")
+    };
+  
+    const signout= () => { 
+     localStorage.clear();
+     history.push("/login");
+    }
+    
+    return (
+     <div>
+        <button name="showwishlist" onClick={showwishlist}   >show wishlist </button>  
+        <button name="showcart" onClick={showcart}   >showcart </button>  
+        <button name="signout" onClick={signout}   >signout </button>
         Products
         {
             products.map((product) =>                
             <ProductCard key = {product.id}  product={product} />
             )
         }
-    </div >)
+    </div >        
+   )
 }
 
 export default Home;
