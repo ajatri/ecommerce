@@ -9,6 +9,8 @@ import SignUp from "../../pages/SignUp"
 import Home from "../../pages/Home"
 import Wishlist from "../../pages/Wishlist"
 import Cart from "../../pages/Cart"
+import UserProfile from "../../pages/UserProfile"
+import Address from "../../pages/Address"
 
 
 const AppRouter = () => <Router>
@@ -25,9 +27,16 @@ const AppRouter = () => <Router>
         <Route path="/wishlist">
             <Wishlist />
         </Route>
-        <Route path="/">
+        <Route path="/userprofile">
+            <UserProfile />
+        </Route>
+        <Route path="/Address">
+            <Address />
+        </Route>
+      <Route path="/">
             <Home />
         </Route>
+       
     </Switch>
 </Router>;
 
