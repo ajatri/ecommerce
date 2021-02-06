@@ -27,8 +27,15 @@ const listItems = cart.map((carts) => (
     </div>
 
   ));
+  
 
-return(<div> {listItems}</div>)
+  const checkout = () => {
+    history.push("/checkout")
+}
+return(<div> 
+  {listItems}
+  <button name="checkout" onClick={checkout}   >Buy</button> 
+</div>)
 
 }
 export default Cart;

@@ -11,6 +11,8 @@ import Wishlist from "../../pages/Wishlist"
 import Cart from "../../pages/Cart"
 import UserProfile from "../../pages/UserProfile"
 import Address from "../../pages/Address"
+import Checkout from "../../pages/Checkout"
+import Success from "../../pages/Success"
 
 
 const AppRouter = () => <Router>
@@ -30,8 +32,14 @@ const AppRouter = () => <Router>
         <Route path="/userprofile">
             <UserProfile />
         </Route>
-        <Route path="/Address">
+        <Route path="/address">
             <Address />
+        </Route>
+        <Route path="/success">
+            <Success />
+        </Route>
+        <Route path="/checkout">
+            <Checkout />
         </Route>
       <Route path="/">
             <Home />
