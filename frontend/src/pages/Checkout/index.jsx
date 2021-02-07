@@ -2,7 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import React from 'react';
 import ReactDom from 'react-dom';
-import Popup from 'react-popup';
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 
 import { useHistory } from "react-router-dom";
 
@@ -31,15 +32,19 @@ console.log('heyyyyy how you doing')
     }
     const listItems = address.map((addresss) => (
         <div key={addresss.id}>
-          {addresss.id}  : {addresss.state}
-    
+         
+          <input type="radio" value="listItems" name="listItems"/>  {addresss.id}  : {addresss.state}
         </div>))
    
     return (
-     <div>
-        <button name="buy" onClick={buy}   >Buy now </button>  
+     <div> 
+      
+
     {listItems}
     <button name="profile" onClick={profile}   >Add address </button>  
+    <Popup trigger={<button> Buy now</button>} position="right center" modal>
+    <div>Order placed</div>
+  </Popup> 
     </div >        
    )
 }
