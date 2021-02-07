@@ -27,6 +27,9 @@ const Home = () => {
         history.push("/cart")
     };
   
+    const profile= () =>{
+        history.push("/userprofile")
+    };
     const signout= () => { 
      localStorage.clear();
      history.push("/login");
@@ -37,6 +40,7 @@ const Home = () => {
         <button name="showwishlist" onClick={showwishlist}   >show wishlist </button>  
         <button name="showcart" onClick={showcart}   >showcart </button>  
         <button name="signout" onClick={signout}   >signout </button>
+        <button name="profile" onClick={profile}   >profile </button>
         Products
         {
             products.map((product) =>                
