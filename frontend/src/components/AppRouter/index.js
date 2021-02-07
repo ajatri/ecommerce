@@ -9,6 +9,10 @@ import SignUp from "../../pages/SignUp"
 import Home from "../../pages/Home"
 import Wishlist from "../../pages/Wishlist"
 import Cart from "../../pages/Cart"
+import UserProfile from "../../pages/UserProfile"
+import Address from "../../pages/Address"
+import Checkout from "../../pages/Checkout"
+
 
 
 const AppRouter = () => <Router>
@@ -25,9 +29,19 @@ const AppRouter = () => <Router>
         <Route path="/wishlist">
             <Wishlist />
         </Route>
-        <Route path="/">
+        <Route path="/userprofile">
+            <UserProfile />
+        </Route>
+        <Route path="/address">
+            <Address />
+        </Route>
+        <Route path="/checkout">
+            <Checkout />
+        </Route>
+      <Route path="/">
             <Home />
         </Route>
+       
     </Switch>
 </Router>;
 
