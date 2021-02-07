@@ -6,7 +6,6 @@ import { useHistory } from "react-router-dom";
 const UserProfile = (props) => {
     const [address, setAddress] = useState([]);
     const history = useHistory();
-console.log('heyyyyy how you doing')
     useEffect(() => {
        const token = localStorage.getItem("token");
        axios.get("http://localhost:8000/address/address", {
@@ -25,14 +24,17 @@ console.log('heyyyyy how you doing')
     
     const listItems = address.map((addresss) => (
         <div key={addresss.id}>
-          {addresss.id}  : {addresss.state}
+            Username :{addresss.email}<br></br>
+            User:{addresss.first_name}<br></br>
+            ADDRESS<br></br>
+          {addresss.id}  : {addresss.state} 
     
         </div>))
    
     return (
      <div>
-        <button name="addaddress" onClick={addaddress}   >add address </button>  
     {listItems}
+     <button name="addaddress" onClick={addaddress}   >add address </button>  
   
     </div >        
    )
