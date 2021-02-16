@@ -39,8 +39,6 @@ function authMiddleware(req, res, next) {
         try {
             const payload = jwt.verify(bearerToken, 'secretkey');
            req.userDetails=payload;
-           console.log('byeeeeeeeee')
-           
             next();
         } catch (error) {
             res.status(403).json({ message: "Not authenticated" });
