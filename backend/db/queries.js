@@ -15,6 +15,6 @@ module.exports = {
     ShowWishlist : "select p.* from product p right outer join (select * from wishlist where uid=?) w on w.pid=p.id group by p.id;  ",
     AddToCart  : "insert into cart(pid,uid) values (?,?);",
     ShowCart : "select p.* from product p right outer join (select * from cart where uid=?) c on c.pid=p.id group by p.id;  ",
-    GetAddress:"select * from address where uid= ?",
-    AddAddress: "insert into address(uid,landmark,city,state,email,phone,pin) values (?,?,?,?,?,?,?);"
+    GetAddress:"select a.*,u.* from address a right outer join (select * from user where id=?) u on a.uid=u.id ;  ",
+    AddAddress: "insert into address(uid,name,houseno,area,landmark,city,state,pin,phone) values (?,?,?,?,?,?,?,?,?);"
 }

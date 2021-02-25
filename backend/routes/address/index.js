@@ -8,17 +8,18 @@ router.post("/", async (req, res) => {
     console.log('hyhsbchsabchbchabc')
 const uid = req.userDetails.id;
 console.log(uid)
-console.log(uid,body.landmark,'hruuuuu', body.city, body.email, body.phone, body.pin,body.rajya);
+console.log(uid,body.name,body.house,body.area,body.landmark,body.city,body.rajya,body.pin,body.phone);
     getConnection()
-        .then(connection => connection.execute(queries.AddAddress, [uid,body.landmark, body.city, body.rajya, body.email, body.phone, body.pin])
+        .then(connection => connection.execute(queries.AddAddress, [uid,body.name,body.house,body.area,body.landmark,body.city,body.rajya,body.pin,body.phone])
             .then(result => { res.status(200).end(JSON.stringify({ message: { result: result[0] } })) })
-            .catch(error => { res.status(500).end(JSON.stringify({ error })) }))
-        .catch(console.log);
-});
+            .catch(error => { res.status(500).end(JSON.stringify({ error }))
+                console.log(error); }))
+            .catch(console.log);
+    });
 
-router.get("/address", async (req, res) => {
+router.get("/", async (req, res) => {
     const uid = req.userDetails.id;
-   // console.log(uid);
+    console.log(uid);
     getConnection()    
         .then(connection => connection.query(queries.GetAddress,[uid])
             .then(result => { res.status(200).end(JSON.stringify({ address : { result:result[0] } })) 
