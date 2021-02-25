@@ -8,7 +8,6 @@ const UserProfile = (props) => {
     const [address, setAddress] = useState([]);
    
     const history = useHistory();
-
     useEffect(() => {
        const token = localStorage.getItem("token");
        axios.get("http://localhost:8000/address", {
@@ -35,7 +34,7 @@ const UserProfile = (props) => {
     const listItems = address.map((addresss) => (
         
         <div key={addresss.id}>
-            <Grid>
+  <Grid>
                 <Paper elevation ={10} style={paperStyle1} >
                     {addresss.name}  <br></br> 
                     {addresss.houseno} <br></br> 
@@ -48,15 +47,13 @@ const UserProfile = (props) => {
                     
                    
                 </Paper>
-                </Grid>
-           
-    
-        </div>))
+   </Grid>
+   </div>))
    
     return (
      <div>
-          <Grid> 
-                <Paper elevation ={3} style={paperStyle} >
+   <Grid> 
+               <Paper elevation ={3} style={paperStyle} >
                      
                     <Avatar style={avatarStyle}>
                     <AccountCircleIcon style={{fontSize:40,color:"white"}} />
@@ -69,12 +66,8 @@ const UserProfile = (props) => {
                 </Paper>
             </Grid>
           {listItems}
-         
-          {address.id}
-         
-        
-   
-  </div >        
+ </div >        
+
    )
 }
 

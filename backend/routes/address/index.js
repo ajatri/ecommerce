@@ -18,7 +18,6 @@ console.log(uid,body.name,body.house,body.area,body.landmark,body.city,body.rajy
 
 router.get("/", async (req, res) => {
     const uid = req.userDetails.id;
-    console.log(uid);
     getConnection()    
         .then(connection => connection.query(queries.GetAddress,[uid])
             .then(result => { res.status(200).end(JSON.stringify({ address : { result:result[0] } })) 
@@ -26,9 +25,8 @@ router.get("/", async (req, res) => {
         
         }
             )
-            .catch(error => { res.status(500).end(JSON.stringify({ error })) })
-        )
-        .catch(console.log)
-    
+            .catch(error => { res.status(500).end(JSON.stringify({ error }))
+            console.log(error); }))
+        .catch(console.log);
 });
 module.exports = router;
