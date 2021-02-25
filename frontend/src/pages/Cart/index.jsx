@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 import { useHistory } from "react-router-dom";
+import {Grid,Paper,Avatar,TextField,Button,Box,Typography,Link} from "@material-ui/core"
 
 const Cart = () => {
     const [cart, setCart] = useState([]);
@@ -19,10 +20,24 @@ const Cart = () => {
            
   }).catch(console.log);
     }, []);
+    const paperStyle = {height:"40vh", float:"left",  width: "300px",
+padding: "5px",margin:"60px 80px 40px auto" }
 
 const listItems = cart.map((carts) => (
     <div key={carts.id}>
-      {carts.name}  : {carts.price}
+      <Grid>
+    <Paper elevation ={5} style={paperStyle} > 
+  <Grid align="center">
+    
+<img src={carts.image}
+ left="1000px" padding="30px"  width='100' height='100'/>
+
+
+
+   <h3 margin-top="5px" margin-bottom="13px">  {carts.name }</h3 > <h3 top="5px">Price :  {carts.price}  </h3>
+   </Grid>
+   </Paper>
+   </Grid>
 
     </div>
 
@@ -32,9 +47,12 @@ const listItems = cart.map((carts) => (
   const checkout = () => {
     history.push("/checkout")
 }
-return(<div> 
+const btnStyle = {backgroundColor:'#ffab10',position:"absolute" ,margin:"600px 100px 130px -250px" }
+
+return(<div>
+
   {listItems}
-  <button name="checkout" onClick={checkout}   >Buy</button> 
+  <Button name="checkout" onClick={checkout} style={btnStyle}   >Buy</Button> 
 </div>)
 
 }

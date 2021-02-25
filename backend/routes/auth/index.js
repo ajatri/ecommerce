@@ -16,6 +16,7 @@ router.post("/login", async({body:{user:{username,password}}}, res) => {
   	          	const token = jwt.sign(payload, 'secretkey', { expiresIn: 60 * 60 });
     	        	res.status(200).json({ token});
               }else{
+              
 	              res.status(403).json({error:"user not found"});
               }
         })

@@ -15,7 +15,21 @@ router.post("/", async (req, res) => {
         .catch(console.log);
 });
 
-
+router.get("/", async (req, res) => {
+    const uid = req.userDetails.id;
+    console.log(uid);
+    getConnection()    
+        .then(connection => connection.query(queries.GetUser,[uid])
+            .then(result => { res.status(200).end(JSON.stringify({user: { result:result[0] } })) 
+        console.log(result);
+        
+        }
+            )
+            .catch(error => { res.status(500).end(JSON.stringify({ error })) })
+        )
+        .catch(console.log)
+    
+});
 
 //Update
 router.put("/edit", async (req, res) => {
