@@ -6,7 +6,7 @@ const router = require("express").Router();
 router.post("/", async (req, res) => {
 const pid = req.body.pid;
 const uid = req.userDetails.id;
-console.log('bye')
+
    
     console.log(pid,uid);
     getConnection()

@@ -20,8 +20,6 @@ console.log('bye')
 router.get("/cart", async (req, res) => {
    
     const uid = req.userDetails.id;
-    console.log('bye')
-       
         console.log(uid);
         getConnection()
             .then(connection => connection.execute(queries.ShowCart ,[uid] )

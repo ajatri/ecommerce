@@ -6,9 +6,8 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
 const UserProfile = (props) => {
     const [address, setAddress] = useState([]);
-    const [user, setUser] = useState([]);
+   
     const history = useHistory();
-console.log('heyyyyy how you doing')
 
     useEffect(() => {
        const token = localStorage.getItem("token");

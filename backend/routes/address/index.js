@@ -5,7 +5,6 @@ const router = require("express").Router();
 
 router.post("/", async (req, res) => {
     const { body } = req;
-    console.log('hyhsbchsabchbchabc')
 const uid = req.userDetails.id;
 console.log(uid)
 console.log(uid,body.name,body.house,body.area,body.landmark,body.city,body.rajya,body.pin,body.phone);
